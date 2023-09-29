@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=3 uid="uid://ccoy10w0l8qla"]
+
+[sub_resource type="GDScript" id="GDScript_ynnn6"]
+script/source = "extends Node
+class_name Inventory
+
+var inventory_slots
+
+func add_item(item):
+	inventory_slots.append(item)
+
+func remove_item(item):
+	inventory_slots.erase(item)
+	
+"
+
+[node name="Inventory" type="Node"]
+script = SubResource("GDScript_ynnn6")

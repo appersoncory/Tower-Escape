@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://b65mq5db1enod"]
+
+[ext_resource type="Script" path="res://scripted_objects/InteractionTest.gd" id="1_jssor"]
+[ext_resource type="PackedScene" uid="uid://2wle0ophdp6j" path="res://scripted_objects/interaction_handler.tscn" id="2_eua12"]
+[ext_resource type="ArrayMesh" uid="uid://d31f7vr1hd0aq" path="res://addons/kaykit_prototype_bits/Assets/obj/target.obj" id="3_b2ifk"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qygwy"]
+size = Vector3(1, 1, 0.4)
+
+[node name="InteractionTest" type="StaticBody3D"]
+script = ExtResource("1_jssor")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_qygwy")
+
+[node name="Mesh" type="MeshInstance3D" parent="."]
+mesh = ExtResource("3_b2ifk")
+
+[node name="InteractionHandler" parent="." instance=ExtResource("2_eua12")]
+display_name = "Target"
+interact_text = "Poke"

@@ -1,0 +1,24 @@
+[gd_scene load_steps=6 format=3 uid="uid://d12c4xbfqsmpg"]
+
+[ext_resource type="Script" path="res://scripted_objects/KeyPickup.gd" id="1_xjs4o"]
+[ext_resource type="PackedScene" uid="uid://bdexa24v10khf" path="res://addons/key.gltf.glb" id="2_vrm0b"]
+[ext_resource type="PackedScene" uid="uid://2wle0ophdp6j" path="res://scripted_objects/interaction_handler.tscn" id="3_8luew"]
+[ext_resource type="Texture2D" uid="uid://3mfqcqy4p666" path="res://Icons/hand.png" id="4_upv6i"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2bwhd"]
+size = Vector3(0.9, 0.2, 0.4)
+
+[node name="Key" type="StaticBody3D" groups=["Interactive"]]
+script = ExtResource("1_xjs4o")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0763099, 0, 0)
+shape = SubResource("BoxShape3D_2bwhd")
+
+[node name="key_gltf" parent="." instance=ExtResource("2_vrm0b")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.2, 0, 0)
+
+[node name="InteractionHandler" parent="." instance=ExtResource("3_8luew")]
+display_name = "Key"
+interact_prompt = "Pickup"
+interact_symbol = ExtResource("4_upv6i")

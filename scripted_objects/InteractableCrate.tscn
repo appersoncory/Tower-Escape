@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://blh0p14614b5"]
+
+[ext_resource type="Script" path="res://scripted_objects/Interactable_Crate.gd" id="1_dmc0t"]
+[ext_resource type="PackedScene" uid="uid://2wle0ophdp6j" path="res://scripted_objects/interaction_handler.tscn" id="2_jwqke"]
+[ext_resource type="ArrayMesh" uid="uid://dy2jj64cp1c2p" path="res://addons/kaykit_prototype_bits/Assets/obj/Cube_Prototype_Small.obj" id="3_frjxh"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_c0euu"]
+size = Vector3(2, 2, 1.9)
+
+[node name="StaticBody3D" type="StaticBody3D"]
+script = ExtResource("1_dmc0t")
+
+[node name="InteractionHandler" parent="." instance=ExtResource("2_jwqke")]
+display_name = "Crate"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -0.1)
+shape = SubResource("BoxShape3D_c0euu")
+
+[node name="CubePrototypeSmall" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00428746, 0, -0.0810631)
+mesh = ExtResource("3_frjxh")

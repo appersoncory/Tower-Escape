@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://d12xfxfteogwe"]
+
+[ext_resource type="Script" path="res://Player/PlayerCharacter.gd" id="1_4qwge"]
+[ext_resource type="PackedScene" uid="uid://bi1i624i21rne" path="res://UI/test_hud.tscn" id="2_y152e"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_aex1k"]
+height = 2.31768
+
+[node name="Player" type="CharacterBody3D" groups=["Player"]]
+script = ExtResource("1_4qwge")
+
+[node name="HUD" parent="." instance=ExtResource("2_y152e")]
+visible = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_aex1k")
+
+[node name="Camera" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.548868, 0)
+
+[node name="InteractionRaycaster" type="RayCast3D" parent="Camera"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.048868, 0)
+target_position = Vector3(0, 0, -2)
+collide_with_areas = true

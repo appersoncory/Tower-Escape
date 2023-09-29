@@ -1,0 +1,281 @@
+[gd_scene load_steps=28 format=3 uid="uid://bwv4chf5mfomf"]
+
+[ext_resource type="ArrayMesh" uid="uid://tnjn7v5ogcx" path="res://addons/kaykit_prototype_bits/Assets/obj/Wall.obj" id="11_qgr6o"]
+[ext_resource type="ArrayMesh" uid="uid://cxfifrbko644k" path="res://addons/kaykit_prototype_bits/Assets/obj/Wall_Doorway.obj" id="12_30e0w"]
+[ext_resource type="ArrayMesh" uid="uid://gmna4awgi3mo" path="res://addons/kaykit_prototype_bits/Assets/obj/Floor_Dirt.obj" id="13_iygc4"]
+[ext_resource type="ArrayMesh" uid="uid://cnsitf57bcul1" path="res://addons/kaykit_prototype_bits/Assets/obj/Primitive_Wall.obj" id="14_5du48"]
+[ext_resource type="ArrayMesh" uid="uid://ty6srevulo8v" path="res://addons/kaykit_prototype_bits/Assets/obj/Box_A.obj" id="15_vymq0"]
+[ext_resource type="Resource" uid="uid://kkxaem7raviv" path="res://Data/Inventory.tres" id="16_icd0o"]
+[ext_resource type="ArrayMesh" uid="uid://bb33umni265yo" path="res://addons/kaykit_prototype_bits/Assets/obj/Box_B.obj" id="16_t7e48"]
+[ext_resource type="ArrayMesh" uid="uid://cso5g8ed0ulho" path="res://addons/kaykit_prototype_bits/Assets/obj/Box_C.obj" id="17_7nr1d"]
+[ext_resource type="ArrayMesh" uid="uid://806ipuqbwale" path="res://addons/kaykit_prototype_bits/Assets/obj/Can_A.obj" id="18_8jur6"]
+[ext_resource type="PackedScene" uid="uid://vu4f2rlfh8rm" path="res://scripted_objects/Door.tscn" id="20_0nkce"]
+[ext_resource type="PackedScene" uid="uid://d12c4xbfqsmpg" path="res://scripted_objects/KeyPickup.tscn" id="20_a32l0"]
+[ext_resource type="ArrayMesh" uid="uid://dy2jj64cp1c2p" path="res://addons/kaykit_prototype_bits/Assets/obj/Cube_Prototype_Small.obj" id="20_sdpq8"]
+[ext_resource type="ArrayMesh" uid="uid://c68eppt1ntvo5" path="res://addons/kaykit_prototype_bits/Assets/obj/Door_A.obj" id="21_qmug3"]
+[ext_resource type="PackedScene" uid="uid://c4sd76frejtsh" path="res://addons/kaykit_prototype_bits/Assets/gltf/table_medium.gltf" id="21_uyh54"]
+[ext_resource type="PackedScene" uid="uid://d12xfxfteogwe" path="res://Player/PlayerCharacter.tscn" id="22_06r37"]
+[ext_resource type="PackedScene" uid="uid://gb2cge4il2r7" path="res://Meshes/Pipevalve.gltf" id="22_i5g83"]
+[ext_resource type="ArrayMesh" uid="uid://hng0m6jgg10f" path="res://addons/kaykit_prototype_bits/Assets/obj/Floor.obj" id="22_jyanc"]
+[ext_resource type="PackedScene" uid="uid://bu13vyem15yhn" path="res://addons/kaykit_prototype_bits/Assets/gltf/Can_A.gltf" id="22_vsdsm"]
+[ext_resource type="PackedScene" uid="uid://by2torjcu8wuc" path="res://addons/kaykit_prototype_bits/Assets/gltf/Floor.gltf" id="23_bwbbc"]
+[ext_resource type="PackedScene" uid="uid://bnayyunwbao5x" path="res://addons/kaykit_prototype_bits/Assets/gltf/Floor_Prototype.gltf" id="23_nmt8i"]
+[ext_resource type="PackedScene" uid="uid://blh0p14614b5" path="res://scripted_objects/InteractableCrate.tscn" id="26_so0py"]
+[ext_resource type="ArrayMesh" uid="uid://cv20ce3y0yw5n" path="res://addons/kaykit_prototype_bits/Assets/obj/Pallet_Large.obj" id="27_3teur"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_7s5tn"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_mb71u"]
+sky_material = SubResource("ProceduralSkyMaterial_7s5tn")
+
+[sub_resource type="Environment" id="Environment_287u1"]
+background_mode = 2
+sky = SubResource("Sky_mb71u")
+tonemap_mode = 2
+glow_enabled = true
+fog_enabled = true
+fog_light_color = Color(0.564706, 0.552941, 0.576471, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_s1uny"]
+size = Vector3(1.2, 4, 0.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5m1l4"]
+size = Vector3(1.6, 1.2, 0.5)
+
+[node name="Node3D" type="Node3D"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.327333, 0.370723, -0.869148, -1.04857e-08, 0.919822, 0.392337, 0.944909, -0.128425, 0.301088, 0, 0, 0)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_287u1")
+
+[node name="Alley" type="Node3D" parent="."]
+
+[node name="FloorDirt" type="MeshInstance3D" parent="Alley"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 4)
+mesh = ExtResource("13_iygc4")
+skeleton = NodePath("../..")
+
+[node name="FloorDirt3" type="MeshInstance3D" parent="Alley"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, -0.5, 4)
+mesh = ExtResource("13_iygc4")
+skeleton = NodePath("../..")
+
+[node name="FloorDirt2" type="MeshInstance3D" parent="Alley"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, -0.5, 4)
+mesh = ExtResource("13_iygc4")
+skeleton = NodePath("../..")
+
+[node name="FloorDirt4" type="MeshInstance3D" parent="Alley"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 8)
+mesh = ExtResource("13_iygc4")
+skeleton = NodePath("../..")
+
+[node name="FloorDirt5" type="MeshInstance3D" parent="Alley"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, -0.5, 8)
+mesh = ExtResource("13_iygc4")
+skeleton = NodePath("../..")
+
+[node name="FloorDirt6" type="MeshInstance3D" parent="Alley"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, -0.5, 8)
+mesh = ExtResource("13_iygc4")
+skeleton = NodePath("../..")
+
+[node name="PrimitiveWall" type="MeshInstance3D" parent="Alley"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 9.9)
+mesh = ExtResource("14_5du48")
+skeleton = NodePath("../..")
+
+[node name="PrimitiveWall2" type="MeshInstance3D" parent="Alley"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 9.9)
+mesh = ExtResource("14_5du48")
+skeleton = NodePath("../..")
+
+[node name="PrimitiveWall3" type="MeshInstance3D" parent="Alley"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 9.9)
+mesh = ExtResource("14_5du48")
+skeleton = NodePath("../..")
+
+[node name="BoxA" type="MeshInstance3D" parent="Alley"]
+transform = Transform3D(0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, 0.5, 5, 0, 3.75)
+mesh = ExtResource("15_vymq0")
+skeleton = NodePath("../..")
+
+[node name="BoxB" type="MeshInstance3D" parent="Alley"]
+transform = Transform3D(-0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107, 4.35, 0, 2.9)
+mesh = ExtResource("16_t7e48")
+skeleton = NodePath("../..")
+
+[node name="BoxC" type="MeshInstance3D" parent="Alley"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5, 0, 3.5)
+mesh = ExtResource("17_7nr1d")
+skeleton = NodePath("../..")
+
+[node name="CanA" type="MeshInstance3D" parent="Alley"]
+transform = Transform3D(0.866025, 0.5, -2.18557e-08, 0, -4.37114e-08, -1, -0.5, 0.866025, -3.78552e-08, 2.5, 0.150833, 3)
+mesh = ExtResource("18_8jur6")
+skeleton = NodePath("../..")
+
+[node name="CubePrototypeSmall" type="MeshInstance3D" parent="Alley"]
+transform = Transform3D(0.998802, 0, -0.0978739, 0, 1, 0, 0.0489369, 0, 1.9976, 4.5, 0, 6.95)
+mesh = ExtResource("20_sdpq8")
+skeleton = NodePath("../..")
+
+[node name="Warehouse" type="Node3D" parent="."]
+
+[node name="Wall" type="MeshInstance3D" parent="Warehouse"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -4, 0, 2)
+mesh = ExtResource("11_qgr6o")
+skeleton = NodePath("../..")
+
+[node name="Wall3" type="MeshInstance3D" parent="Warehouse"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -6, 0, 4.47035e-08)
+mesh = ExtResource("11_qgr6o")
+skeleton = NodePath("../..")
+
+[node name="Wall4" type="MeshInstance3D" parent="Warehouse"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -6, 0, -4)
+mesh = ExtResource("11_qgr6o")
+skeleton = NodePath("../..")
+
+[node name="Wall8" type="MeshInstance3D" parent="Warehouse"]
+transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 6, 0, -4)
+mesh = ExtResource("11_qgr6o")
+skeleton = NodePath("../..")
+
+[node name="Wall9" type="MeshInstance3D" parent="Warehouse"]
+transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 6, 0, 0)
+mesh = ExtResource("11_qgr6o")
+skeleton = NodePath("../..")
+
+[node name="Wall2" type="MeshInstance3D" parent="Warehouse"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 4, 0, 2)
+mesh = ExtResource("11_qgr6o")
+skeleton = NodePath("../..")
+
+[node name="WallDoorway" type="MeshInstance3D" parent="Warehouse"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 2)
+mesh = ExtResource("12_30e0w")
+skeleton = NodePath("../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Warehouse/WallDoorway"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Warehouse/WallDoorway/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.4, 2, -2.38419e-07)
+shape = SubResource("BoxShape3D_s1uny")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Warehouse/WallDoorway/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.4, 2, 1.19209e-07)
+shape = SubResource("BoxShape3D_s1uny")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="Warehouse/WallDoorway/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.4, 0)
+shape = SubResource("BoxShape3D_5m1l4")
+
+[node name="Wall6" type="MeshInstance3D" parent="Warehouse"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -4, 0, -6)
+mesh = ExtResource("11_qgr6o")
+skeleton = NodePath("../..")
+
+[node name="Wall10" type="MeshInstance3D" parent="Warehouse"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 4, 0, -6)
+mesh = ExtResource("11_qgr6o")
+skeleton = NodePath("../..")
+
+[node name="WallDoorway2" type="MeshInstance3D" parent="Warehouse"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, -6)
+mesh = ExtResource("12_30e0w")
+skeleton = NodePath("../..")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Warehouse"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.8018, 2.35856, 0.485617)
+light_color = Color(1, 1, 0.196078, 1)
+
+[node name="Player" parent="." instance=ExtResource("22_06r37")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.10524, 1.50933, -2.15958)
+inventory = ExtResource("16_icd0o")
+
+[node name="Floor" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 3.7, -0.2)
+mesh = ExtResource("22_jyanc")
+
+[node name="Floor2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.7, -0.2)
+mesh = ExtResource("22_jyanc")
+
+[node name="Floor3" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 3.7, -0.2)
+mesh = ExtResource("22_jyanc")
+
+[node name="Floor4" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 3.7, -4.2)
+mesh = ExtResource("22_jyanc")
+
+[node name="Floor5" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.7, -4.2)
+mesh = ExtResource("22_jyanc")
+
+[node name="Floor6" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 3.7, -4.2)
+mesh = ExtResource("22_jyanc")
+
+[node name="PalletLarge" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 6.3, 1.7, 3.9)
+mesh = ExtResource("27_3teur")
+
+[node name="PalletLarge2" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 6.3, 1.7, 8)
+mesh = ExtResource("27_3teur")
+
+[node name="StaticBody3D" parent="." instance=ExtResource("26_so0py")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.2, 0, -4)
+
+[node name="Door" parent="." instance=ExtResource("20_0nkce")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.8, 0, 2)
+is_locked = true
+key_name = "FrontDoor"
+door_model = ExtResource("21_qmug3")
+
+[node name="Pipevalve" parent="." instance=ExtResource("22_i5g83")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.5, 1, 9.4)
+
+[node name="Floor7" parent="." instance=ExtResource("23_bwbbc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, -8)
+
+[node name="Floor8" parent="." instance=ExtResource("23_bwbbc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, -12)
+
+[node name="Floor9" parent="." instance=ExtResource("23_bwbbc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, -16)
+
+[node name="Floor_Prototype" parent="." instance=ExtResource("23_nmt8i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, -4)
+
+[node name="Floor_Prototype2" parent="." instance=ExtResource("23_nmt8i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, -0.5, -4)
+
+[node name="Floor_Prototype3" parent="." instance=ExtResource("23_nmt8i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, -0.5, -4)
+
+[node name="Floor_Prototype4" parent="." instance=ExtResource("23_nmt8i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+
+[node name="Floor_Prototype5" parent="." instance=ExtResource("23_nmt8i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, -0.5, 0)
+
+[node name="Floor_Prototype6" parent="." instance=ExtResource("23_nmt8i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, -0.5, 0)
+
+[node name="StaticBody3D2" parent="." instance=ExtResource("20_a32l0")]
+transform = Transform3D(-0.980488, 0, -0.196579, 0, 1, 0, 0.196579, 0, -0.980488, 3.529, 0.873866, 0.456734)
+key_name = "FrontDoor"
+
+[node name="table_medium" parent="." instance=ExtResource("21_uyh54")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 0.75)
+
+[node name="Can_A" parent="." instance=ExtResource("22_vsdsm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 0.803497, 0.5)

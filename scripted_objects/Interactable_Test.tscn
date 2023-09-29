@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://cyo58ql1rxxgb"]
+
+[ext_resource type="ArrayMesh" uid="uid://ds02ui2xqnqu0" path="res://addons/kaykit_prototype_bits/Assets/obj/Barrel_B.obj" id="1_gbu2b"]
+[ext_resource type="Script" path="res://scripted_objects/Interactable.gd" id="1_wm68d"]
+[ext_resource type="PackedScene" uid="uid://2wle0ophdp6j" path="res://scripted_objects/interaction_handler.tscn" id="2_bclmq"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_gq7qf"]
+
+[node name="Interactable_Test" type="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4, 0.5, 0.7)
+script = ExtResource("1_wm68d")
+interact_text = "A metal barrel. You can hear a small amount of liquid sloshing around when you tip it."
+
+[node name="InteractionHandler" parent="." instance=ExtResource("2_bclmq")]
+display_name = "Barrel"
+interact_prompt = "Examine"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4, 0, -0.7)
+shape = SubResource("BoxShape3D_gq7qf")
+
+[node name="BarrelB" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4, 0, -0.7)
+mesh = ExtResource("1_gbu2b")

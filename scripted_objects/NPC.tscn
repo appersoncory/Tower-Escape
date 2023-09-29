@@ -1,0 +1,46 @@
+[gd_scene load_steps=9 format=3 uid="uid://7u7i3c788l1v"]
+
+[ext_resource type="Script" path="res://scripted_objects/NPC.gd" id="1_ll3kr"]
+[ext_resource type="PackedScene" uid="uid://2wle0ophdp6j" path="res://scripted_objects/interaction_handler.tscn" id="2_bsdv5"]
+[ext_resource type="ArrayMesh" uid="uid://1ch4ue2dowja" path="res://addons/kaykit_prototype_bits/Assets/obj/Dummy_Base.obj" id="3_s8itm"]
+[ext_resource type="ArrayMesh" uid="uid://5bktcd5fmu0x" path="res://addons/kaykit_prototype_bits/Assets/obj/Dummy_Base_Dummy_Body.obj" id="4_8gw4b"]
+[ext_resource type="ArrayMesh" uid="uid://dqv3vhcum4r74" path="res://addons/kaykit_prototype_bits/Assets/obj/Dummy_Base_Dummy_Body_Dummy_ArmLeft.obj" id="5_akkhm"]
+[ext_resource type="ArrayMesh" uid="uid://wt3l00i8ilkm" path="res://addons/kaykit_prototype_bits/Assets/obj/Dummy_Base_Dummy_Body_Dummy_ArmRight.obj" id="6_qjmtw"]
+[ext_resource type="ArrayMesh" uid="uid://b8ubjcfanhfug" path="res://addons/kaykit_prototype_bits/Assets/obj/Dummy_Base_Dummy_Body_Dummy_Head.obj" id="7_cgj4l"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_5jtn2"]
+height = 2.4
+
+[node name="CharacterBody3D" type="CharacterBody3D" groups=["Interactive"]]
+script = ExtResource("1_ll3kr")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2, 0)
+shape = SubResource("CapsuleShape3D_5jtn2")
+
+[node name="InteractionHandler" parent="." instance=ExtResource("2_bsdv5")]
+display_name = "NPC"
+interact_prompt = "Talk"
+
+[node name="DummyBase" type="MeshInstance3D" parent="."]
+mesh = ExtResource("3_s8itm")
+
+[node name="DummyBaseDummyBody" type="MeshInstance3D" parent="DummyBase"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.23517e-08, 0.1, -2.23517e-08)
+mesh = ExtResource("4_8gw4b")
+skeleton = NodePath("../..")
+
+[node name="DummyBaseDummyBodyDummyArmLeft" type="MeshInstance3D" parent="DummyBase"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.23517e-08, 0.1, -2.23517e-08)
+mesh = ExtResource("5_akkhm")
+skeleton = NodePath("../..")
+
+[node name="DummyBaseDummyBodyDummyArmRight" type="MeshInstance3D" parent="DummyBase"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.23517e-08, 0.1, -2.23517e-08)
+mesh = ExtResource("6_qjmtw")
+skeleton = NodePath("../..")
+
+[node name="DummyBaseDummyBodyDummyHead" type="MeshInstance3D" parent="DummyBase"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.23517e-08, 0.1, -2.23517e-08)
+mesh = ExtResource("7_cgj4l")
+skeleton = NodePath("../..")

@@ -1,0 +1,33 @@
+[gd_scene load_steps=3 format=3 uid="uid://bi1i624i21rne"]
+
+[ext_resource type="Script" path="res://UI/HUD.gd" id="1_wqh0j"]
+[ext_resource type="Texture2D" uid="uid://dmj64wkenw5r7" path="res://Icons/eye.png" id="2_kvev2"]
+
+[node name="HUD" type="AspectRatioContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_wqh0j")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="VBoxContainer"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+
+[node name="InteractIcon" type="TextureRect" parent="VBoxContainer/AspectRatioContainer"]
+layout_mode = 2
+texture = ExtResource("2_kvev2")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="TargetNameLabel" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Object"
+horizontal_alignment = 1

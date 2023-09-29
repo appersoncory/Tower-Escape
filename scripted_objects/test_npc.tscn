@@ -1,0 +1,72 @@
+[gd_scene load_steps=10 format=3 uid="uid://f5v11kwv7tpa"]
+
+[ext_resource type="ArrayMesh" uid="uid://1ch4ue2dowja" path="res://addons/kaykit_prototype_bits/Assets/obj/Dummy_Base.obj" id="2_pypm7"]
+[ext_resource type="ArrayMesh" uid="uid://5bktcd5fmu0x" path="res://addons/kaykit_prototype_bits/Assets/obj/Dummy_Base_Dummy_Body.obj" id="3_prkse"]
+[ext_resource type="ArrayMesh" uid="uid://dqv3vhcum4r74" path="res://addons/kaykit_prototype_bits/Assets/obj/Dummy_Base_Dummy_Body_Dummy_ArmLeft.obj" id="4_85a8j"]
+[ext_resource type="ArrayMesh" uid="uid://wt3l00i8ilkm" path="res://addons/kaykit_prototype_bits/Assets/obj/Dummy_Base_Dummy_Body_Dummy_ArmRight.obj" id="5_g2wwe"]
+[ext_resource type="ArrayMesh" uid="uid://b8ubjcfanhfug" path="res://addons/kaykit_prototype_bits/Assets/obj/Dummy_Base_Dummy_Body_Dummy_Head.obj" id="6_log4n"]
+[ext_resource type="ArrayMesh" uid="uid://b0cigdvegms75" path="res://addons/kaykit_prototype_bits/Assets/obj/Dummy_Base_Dummy_Body_Dummy_Target.obj" id="7_yqbqw"]
+[ext_resource type="PackedScene" uid="uid://2wle0ophdp6j" path="res://scripted_objects/interaction_handler.tscn" id="8_n2t3n"]
+
+[sub_resource type="GDScript" id="GDScript_r2gdq"]
+script/source = "extends Node3D
+
+@export var npc_name : String = \"NPC\"
+@export var dialogue : String = \"Hello!\"
+
+var interaction_handler : Interaction_Handler 
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	
+	interaction_handler = $InteractionHandler
+	interaction_handler.display_name = npc_name
+	interaction_handler.on_interacted.connect(_on_interacted)
+	
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	pass
+
+func _on_interacted(instrigator):
+	print(dialogue)
+"
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ejdhn"]
+height = 2.4
+
+[node name="NPCTest" type="CharacterBody3D" groups=["Interactive"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1, 0)
+script = SubResource("GDScript_r2gdq")
+npc_name = "Bob"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_ejdhn")
+
+[node name="DummyBase" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.1, 0)
+mesh = ExtResource("2_pypm7")
+skeleton = NodePath("../..")
+
+[node name="DummyBaseDummyBody" type="MeshInstance3D" parent="DummyBase"]
+mesh = ExtResource("3_prkse")
+skeleton = NodePath("../../..")
+
+[node name="DummyBaseDummyBodyDummyArmLeft" type="MeshInstance3D" parent="DummyBase"]
+mesh = ExtResource("4_85a8j")
+skeleton = NodePath("../../..")
+
+[node name="DummyBaseDummyBodyDummyArmRight" type="MeshInstance3D" parent="DummyBase"]
+mesh = ExtResource("5_g2wwe")
+skeleton = NodePath("../../..")
+
+[node name="DummyBaseDummyBodyDummyHead" type="MeshInstance3D" parent="DummyBase"]
+mesh = ExtResource("6_log4n")
+skeleton = NodePath("../../..")
+
+[node name="DummyBaseDummyBodyDummyTarget" type="MeshInstance3D" parent="DummyBase"]
+mesh = ExtResource("7_yqbqw")
+skeleton = NodePath("../../..")
+
+[node name="InteractionHandler" parent="." instance=ExtResource("8_n2t3n")]
+display_name = "NPC"
+interact_prompt = "Talk"

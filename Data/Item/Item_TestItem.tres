@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://b1xll81ipk4vg"]
+
+[ext_resource type="Script" path="res://Data/Item/Item.gd" id="1_hk861"]
+[ext_resource type="Texture2D" uid="uid://bl6iu82tx5kw8" path="res://addons/dungeon_texture.png" id="1_mm4j8"]
+
+[resource]
+script = ExtResource("1_hk861")
+name = "Test Item"
+icon = ExtResource("1_mm4j8")
